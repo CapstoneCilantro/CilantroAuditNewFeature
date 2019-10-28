@@ -8,6 +8,7 @@ import kivy
 
 from auditor_page import AuditorPage
 from create_audit_page import CreateAuditPage
+from view_audit_templates_page import ViewAuditTemplatesPage
 
 kivy.require('1.11.1')
 
@@ -42,6 +43,7 @@ class CilantroAudit(App):
         sm.add_widget(AdminPage(name="AdminScreen"))
         sm.add_widget(AuditorPage(name="AuditorScreen"))
         sm.add_widget(CreateAuditPage(name="CreateAuditPage"))
+        sm.add_widget(ViewAuditTemplatesPage(name="ViewAuditTemplatesPage"))
 
         self.title = 'CilantroAudit'
         return sm

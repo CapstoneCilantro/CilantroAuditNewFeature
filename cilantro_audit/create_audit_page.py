@@ -21,7 +21,7 @@ class ConfirmationPop(Popup):
     yes = ObjectProperty(None)
 
     def return_admin_page(self):
-        self.dismiss();
+        self.dismiss()
         self.manager.current = 'AdminScreen'
 
 

@@ -11,9 +11,10 @@ from mongoengine import connect
 
 kivy.require('1.11.1')
 
-connect("toost")
+connect("testdb")
 
-class ViewAuditsPage(Screen, App):
+
+class ViewAuditTemplatesPage(Screen, App):
 
     def build(self):
         # Initialize page information and layout
@@ -33,21 +34,17 @@ class ViewAuditsPage(Screen, App):
                                           on_press=self.go_to_page))
 
         # https://kivy.org/doc/stable/api-kivy.uix.scrollview.html?highlight=view#
-        root = ScrollView(size_hint=(1,None),
+        root = ScrollView(size_hint=(1, None),
                           size=(Window.width, Window.height),
                           do_scroll_x=False)
 
         # Add bottom bar to the page
-        bottom_layout = GridLayout(cols=2)
-        bottom_layout.add_widget(Button(text='Return To Homepage',
-                                        font_size=20,
-                                        on_press=self.back(root.manager)))
-        bottom_layout.add_widget(Button(text='Exit',
-                                        font_size=20,
-                                        size_hint=(.4, .2),
-                                        on_press=self.exit()))
-        page_layout.add_widget(bottom_layout)
-
+        # bottom_layout = GridLayout(cols=2)
+        # bottom_layout.add_widget(Button(text='Return To Homepage',
+        #                                 font_size=20,
+        #                                 on_press=self.back(root.manager)))
+        # page_layout.add_widget(bottom_layout)
+        #
         root.add_widget(page_layout)
         return root
 
