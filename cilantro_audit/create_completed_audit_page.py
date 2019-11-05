@@ -14,7 +14,6 @@ from cilantro_audit.create_audit_template_page import ConfirmationPop, ErrorPop
 
 kivy.require(KIVY_REQUIRED_VERSION)
 
-
 # Loads in the .kv file which contains the CreateCompletedAuditPage layout.
 Builder.load_file("./widgets/create_completed_audit_page.kv")
 
@@ -69,8 +68,11 @@ class CreateCompletedAuditPage(Screen, FloatLayout):
         # The object returned from the .kv is a TextField, with a member text
         completed_audit.with_auditor(self.auditor_name.text)
         for a in self.questions:
-            temp_answer = Answer(text=a.question.text, severity=self.question_severity(a), response=a.response,
-                                 comment=a.other_comments.text)
+            if a.other_comments.text:
+                temp_answer = Answer(text=a.question.text, severity=self.question_severity(a), response=a.response,
+                                     comment=a.other_comments.text)
+            else:
+                temp_answer = Answer(text=a.question.text, severity=self.question_severity(a), response=a.response)
             completed_audit.with_answer(temp_answer)
 
         completed_audit.build().save()
