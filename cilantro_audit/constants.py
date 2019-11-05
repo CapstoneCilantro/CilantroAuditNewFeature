@@ -23,6 +23,12 @@ SEVERITY_VALUES = [
     "GREEN",
 ]
 
+SEVERITY_PRECEDENCE = {
+    "RED": 0,
+    "YELLOW": 1,
+    "GREEN": 2,
+}
+
 # Database Names
 TEST_DB = "testdb"
 PROD_DB = "prod"
@@ -31,8 +37,11 @@ PROD_DB = "prod"
 HOME_SCREEN = "HomeScreen"
 ADMIN_SCREEN = "AdminScreen"
 AUDITOR_SCREEN = "AuditorScreen"
+CREATE_AUDIT_PAGE = "CreateAuditPage"
+COMPLETED_AUDITS_LIST_PAGE = "CompletedAuditsListPage"
 CREATE_AUDIT_TEMPLATE_PAGE = "CreateAuditTemplatePage"
 CREATE_COMPLETED_AUDIT_PAGE = "CreateCompletedAuditPage"
+VIEW_AUDIT_TEMPLATES = "ViewAuditTemplates"
 
 # Colors
 RGB_RED = get_color_from_hex("#FF4500")
