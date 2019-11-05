@@ -3,19 +3,28 @@ from kivy.app import App
 from kivy.lang import Builder
 from kivy.properties import ObjectProperty, StringProperty
 from kivy.uix.floatlayout import FloatLayout
+from kivy.uix.popup import Popup
 from kivy.uix.screenmanager import Screen
 from mongoengine import connect
 
 from cilantro_audit.audit_template import AuditTemplate
 from cilantro_audit.completed_audit import CompletedAuditBuilder, Answer, Response
-from cilantro_audit.constants import KIVY_REQUIRED_VERSION, PROD_DB
+from cilantro_audit.constants import KIVY_REQUIRED_VERSION, PROD_DB, AUDITOR_SCREEN
 from cilantro_audit.answer_module import AnswerModule
-from cilantro_audit.create_audit_template_page import ConfirmationPop, ErrorPop
+from cilantro_audit.create_audit_template_page import ErrorPop
 
 kivy.require(KIVY_REQUIRED_VERSION)
 
 # Loads in the .kv file which contains the CreateCompletedAuditPage layout.
 Builder.load_file("./widgets/create_completed_audit_page.kv")
+
+
+class ConfirmationPop(Popup):
+    yes = ObjectProperty(None)
+
+    def return_admin_page(self):
+        self.dismiss()
+        self.manager.current = AUDITOR_SCREEN
 
 
 class CreateCompletedAuditPage(Screen, FloatLayout):
