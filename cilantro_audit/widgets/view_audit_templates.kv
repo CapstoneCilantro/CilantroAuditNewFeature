@@ -4,6 +4,7 @@
 <ViewAuditTemplates>:
     name: 'ViewAuditTemplates'
     templates_list: templates_list
+    root: root
 
     BoxLayout:
         orientation: 'vertical'
@@ -21,7 +22,7 @@
                     size: self.size
                     pos: self.pos
 
-            Button:
+            AuditButtonTemplate:
                 text: 'Back'
                 size_hint: 0.3, 1.0
                 on_release:
