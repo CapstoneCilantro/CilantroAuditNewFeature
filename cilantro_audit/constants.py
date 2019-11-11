@@ -29,6 +29,9 @@ SEVERITY_PRECEDENCE = {
     "GREEN": 2,
 }
 
+# Directory Names
+PDF_OUTPUT_DIR = "/CilantroPdfOutput/"
+
 # Database Names
 TEST_DB = "testdb"
 PROD_DB = "prod"
