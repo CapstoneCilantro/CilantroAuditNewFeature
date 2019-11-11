@@ -38,6 +38,6 @@ class PdfOutput():
         self.canvas.drawText(textbox)
 
 
-#pdf = PdfOutput("Blank.pdf")
-#pdf.create_page("PRINT THIS OUT IT IS A TEST TO SEE WHAT HAPPENS WHEN THERE IS A REALLY LONG LINE LIKE WHAT HAPPENS")
-#pdf.canvas.save()
+pdf = PdfOutput("Blank.pdf")
+pdf.create_page("PRINT THIS OUT IT IS A TEST TO SEE WHAT HAPPENS WHEN THERE IS A REALLY LONG LINE LIKE WHAT HAPPENS")
+pdf.canvas.save()
