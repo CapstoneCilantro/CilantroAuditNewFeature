@@ -15,11 +15,13 @@ class PdfOutput():
     # Sets up output directory if necessary, and returns
     # the full path + file_name
     def __establish_path(self, file_name):
-        if (os.name == 'nt'):
+        if (os.name == 'nt'): # Windows OS
             home_dir = os.getenv('HOMEPATH')
-        else:
+            home_dir += "\\Desktop\\"
+            dir_path =  home_dir + PDF_OUTPUT_DIR + "\\"
+        else: # Mac & Linux OS
             home_dir = os.environ['HOME']
-        dir_path = home_dir + PDF_OUTPUT_DIR
+            dir_path = home_dir + "/" + PDF_OUTPUT_DIR + "/"
 
         if os.access(dir_path, os.F_OK) is False: # If output dir doesn't already exist
             if os.access(home_dir, os.W_OK) is False: # If we have don't write access in home directory

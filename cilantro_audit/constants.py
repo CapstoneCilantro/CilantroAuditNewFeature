@@ -30,7 +30,7 @@ SEVERITY_PRECEDENCE = {
 }
 
 # Directory Names
-PDF_OUTPUT_DIR = "/CilantroPdfOutput/"
+PDF_OUTPUT_DIR = "CilantroPdfOutput"
 
 # Database Names
 TEST_DB = "testdb"
