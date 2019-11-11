@@ -1,12 +1,12 @@
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import letter
+from reportlab.platypus import Paragraph, Table
 from cilantro_audit.constants import PDF_OUTPUT_DIR
 import os
 
 
 """ Handles all pdf creation and output functionality."""
 class PdfOutput():
-
     # Note: This is setup to overwrite any existing file with the same name
     def __init__(self, pdf_file_name):
         file = self.__establish_path(pdf_file_name)
@@ -15,7 +15,10 @@ class PdfOutput():
     # Sets up output directory if necessary, and returns
     # the full path + file_name
     def __establish_path(self, file_name):
-        home_dir = os.environ['HOME']
+        if (os.name == 'nt'):
+            home_dir = os.getenv('HOMEPATH')
+        else:
+            home_dir = os.environ['HOME']
         dir_path = home_dir + PDF_OUTPUT_DIR
 
         if os.access(dir_path, os.F_OK) is False: # If output dir doesn't already exist
@@ -27,12 +30,14 @@ class PdfOutput():
 
         return dir_path + file_name
 
-    def create_page(self):
-        self.canvas.drawString(100, 100, "BLANK AND CHANGEDDDD")
-        self.canvas.drawString(500, 100, "OH LAWD WTF")
+    def create_page(self, print_text):
+        textbox = self.canvas.beginText()
+        textbox.setTextOrigin(10, 700)
+        textbox.textLine(text=print_text)
+
+        self.canvas.drawText(textbox)
 
 
-pdf = PdfOutput("Blank.pdf")
-pdf.create_page()
-pdf.canvas.showPage()
-pdf.canvas.save()
+#pdf = PdfOutput("Blank.pdf")
+#pdf.create_page("PRINT THIS OUT IT IS A TEST TO SEE WHAT HAPPENS WHEN THERE IS A REALLY LONG LINE LIKE WHAT HAPPENS")
+#pdf.canvas.save()
